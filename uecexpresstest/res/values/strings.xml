@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World!</string>
     <string name="app_name">UecExpressTestTest</string>
+    <string name="update_button">更新</string>
 
 </resources>

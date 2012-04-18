@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, UecExpressActivity!</string>
-    <string name="app_name">UecExpress</string>
+    <string name="app_name">UEC休講情報</string>
+    <string name="update_button">更新</string>
+    <string name="dialog_title">取得中...</string>
+    <string name="dialog_message">お待ち下さい</string>
 
 </resources>
