@@ -16,6 +16,6 @@ public class ButtonClickListener implements OnClickListener {
 	@Override
 	public void onClick(final View view) {
 		// TODO Auto-generated method stub
-		mActivity.updateAction();
+		mActivity.updateButtonAction();
 	}
 }

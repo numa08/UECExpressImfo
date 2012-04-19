@@ -1,10 +1,13 @@
 package jp.ac.uec.numa08.uecexpress;
 
-import jp.ac.uec.numa08.asynchttpget.RequestHttpTastk;
+import java.util.List;
+
+import jp.ac.uec.numa08.asynchttpget.RequestHttpTask;
 import jp.ac.uec.numa08.widgets.ButtonClickListener;
 import jp.ac.uec.numa08.widgets.GetExpressListener;
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -34,20 +37,41 @@ public class UecExpressActivity extends Activity {
 	}
 
 	@Override
-	protected void onStart() {
+	protected void onResume() {
 		// TODO Auto-generated method stub
-		super.onStart();
 		// TODO　休講情報取得タスク実行
-		final RequestHttpTastk task = new RequestHttpTastk(this,
-				expressListener, R.string.dialog_message, R.string.dialog_title);
-		task.execute(this._UEC_EXPRESS_URL);
+		executeExpressGetTask();
+		super.onResume();
+	}
+
+	private void executeExpressGetTask() {
+		final RequestHttpTask httpTask = new RequestHttpTask(this,
+				expressListener, R.string.dialog_message,
+				R.string.dialog_title, "Shift_jis");
+		httpTask.execute(UecExpressActivity._UEC_EXPRESS_URL);
 	}
 
 	/**
 	 * 更新ボタンがクリックされた
 	 */
-	public void updateAction() {
+	public void updateButtonAction() {
 		// TODO 休講情報取得タスク実行
+		executeExpressGetTask();
 	}
 
+	/**
+	 * 休講情報更新時のアクション
+	 * 
+	 * @param titleList
+	 *            休講科目のタイトル
+	 * 
+	 */
+	public void updateAction(List<String> titleList) {
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_expandable_list_item_1);
+		for (String title : titleList) {
+			adapter.add(title);
+		}
+		expressListView.setAdapter(adapter);
+	}
 }

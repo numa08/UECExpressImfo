@@ -1,5 +1,8 @@
 package jp.ac.uec.numa08.uecexpress.test;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
 import jp.ac.uec.numa08.uecexpress.R;
 import jp.ac.uec.numa08.uecexpress.UecExpressActivity;
 import android.test.ActivityInstrumentationTestCase2;
@@ -28,7 +31,9 @@ public class UecExpressActivityTest extends
 				.findViewById(R.id.express_list);
 	}
 
-	public void testButtonClicked() {
+	public void testButtonClicked() throws InterruptedException {
+		final CountDownLatch signal = new CountDownLatch(1);
+		signal.await(30, TimeUnit.SECONDS);
 		activity.runOnUiThread(new Runnable() {
 
 			@Override
