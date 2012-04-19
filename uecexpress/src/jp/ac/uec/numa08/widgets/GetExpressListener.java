@@ -2,6 +2,7 @@ package jp.ac.uec.numa08.widgets;
 
 import java.util.List;
 
+import jp.ac.numa08.object.UECExpressImfo;
 import jp.ac.uec.numa08.asynchttpget.RequestExecuteInterface.onRequestExecuteListener;
 import jp.ac.uec.numa08.uecexpress.UecExpressActivity;
 import net.htmlparser.jericho.Source;
@@ -25,10 +26,9 @@ public class GetExpressListener implements onRequestExecuteListener {
 		Log.d(TAG, content);
 		final Source html = new Source(content);
 		final ExpressPageParser parser = new ExpressPageParser(html);
-		List<String> titleList;
-		titleList = parser.getExpressImfo();
+		List<UECExpressImfo> imfoList = parser.getExpressImfo();
 		// TODO　描画メソッド呼び出し
-		mActivity.updateAction(titleList);
+		mActivity.updateAction(imfoList);
 
 	}
 

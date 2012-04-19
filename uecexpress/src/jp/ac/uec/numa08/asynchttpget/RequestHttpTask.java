@@ -138,7 +138,7 @@ public class RequestHttpTask extends AsyncTask<String, Void, String> {
 		Log.d(TAG, "on cancelled");
 		if (dialog != null && dialog.isShowing()) {
 			dialog.dismiss();
-			dialog = null;
+			// dialog = null;
 		}
 	}
 

@@ -2,12 +2,12 @@ package jp.ac.uec.numa08.uecexpress;
 
 import java.util.List;
 
+import jp.ac.numa08.object.UECExpressImfo;
 import jp.ac.uec.numa08.asynchttpget.RequestHttpTask;
 import jp.ac.uec.numa08.widgets.ButtonClickListener;
 import jp.ac.uec.numa08.widgets.GetExpressListener;
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -66,12 +66,15 @@ public class UecExpressActivity extends Activity {
 	 *            休講科目のタイトル
 	 * 
 	 */
-	public void updateAction(List<String> titleList) {
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_expandable_list_item_1);
-		for (String title : titleList) {
-			adapter.add(title);
-		}
-		expressListView.setAdapter(adapter);
+	// public void updateAction(List<String> titleList)
+	// ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+	// android.R.layout.simple_expandable_list_item_1);
+	// for (String title : titleList) {
+	// adapter.add(title);
+	// }
+	// expressListView.setAdapter(adapter);
+	// }
+
+	public void updateAction(List<UECExpressImfo> imfoList) {
 	}
 }

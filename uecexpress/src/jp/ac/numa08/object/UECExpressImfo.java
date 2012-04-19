@@ -11,16 +11,28 @@ public class UECExpressImfo {
 
 	private String className;
 	private String date;
-	private int time;
+	private String time;
 	private String title;
 	private String teacher;
 	private String description;
+
+	public UECExpressImfo(final String className, final String date,
+			final String time, final String title, final String teacher,
+			final String description) {
+		super();
+		this.className = className;
+		this.date = date;
+		this.time = time;
+		this.title = title;
+		this.teacher = teacher;
+		this.description = description;
+	}
 
 	public String getClassName() {
 		return className;
 	}
 
-	public void setClassName(String className) {
+	public void setClassName(final String className) {
 		this.className = className;
 	}
 
@@ -28,15 +40,15 @@ public class UECExpressImfo {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(final String date) {
 		this.date = date;
 	}
 
-	public int getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(int time) {
+	public void setTime(final String time) {
 		this.time = time;
 	}
 
@@ -44,7 +56,7 @@ public class UECExpressImfo {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(final String title) {
 		this.title = title;
 	}
 
@@ -52,7 +64,7 @@ public class UECExpressImfo {
 		return teacher;
 	}
 
-	public void setTeacher(String teacher) {
+	public void setTeacher(final String teacher) {
 		this.teacher = teacher;
 	}
 
@@ -60,7 +72,7 @@ public class UECExpressImfo {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 
