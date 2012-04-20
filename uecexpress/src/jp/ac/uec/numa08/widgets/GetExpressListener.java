@@ -23,7 +23,7 @@ public class GetExpressListener implements onRequestExecuteListener {
 		Log.d(TAG, "on success");
 		// TODO Auto-generated method stub
 		// TODO テータ解析
-		Log.d(TAG, content);
+		// Log.d(TAG, content);
 		final Source html = new Source(content);
 		final ExpressPageParser parser = new ExpressPageParser(html);
 		List<UECExpressImfo> imfoList = parser.getExpressImfo();

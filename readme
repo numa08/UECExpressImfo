@@ -1,0 +1,19 @@
+this is University of Electro and Communication's Express Imfomation Application for Android.
+
+Ah... Express Imformation means lecture canecellation...?
+
+In Japanese Express is called "Kyuukou" and lectrue cancellation called "Kyuukou"...
+
+Oh! If you launth this app, you would import some libraris.
+
+First "Jericho Html Parser (http://jericho.htmlparser.net/docs/index.html).
+
+You download .jar file and put ./UECExpress/libs/ ,and then add buildpath.
+
+And, add hamcrest. This is Testing Library.
+
+If you use that library, you would see this site (http://d.hatena.ne.jp/esmasui/20100904/1283628729).
+
+thak you!!
+
+

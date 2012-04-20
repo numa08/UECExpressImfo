@@ -175,33 +175,31 @@ public class RequestHttpTask extends AsyncTask<String, Void, String> {
 		// TODO Auto-generated method stub
 		Log.d(TAG, "do in back ground");
 
-		synchronized (activity) {
-			final HttpClient httpClient = new DefaultHttpClient();
-			final HttpParams param = httpClient.getParams();
-			HttpConnectionParams.setConnectionTimeout(param, _TIME_OUT);
-			HttpConnectionParams.setSoTimeout(param, _TIME_OUT);
-			final HttpUriRequest httpRequest = new HttpGet(params[0]);
-			HttpResponse httpResponse = null;
-			HttpEntity httpEntity = null;
-			String content = null;
+		final HttpClient httpClient = new DefaultHttpClient();
+		final HttpParams param = httpClient.getParams();
+		HttpConnectionParams.setConnectionTimeout(param, _TIME_OUT);
+		HttpConnectionParams.setSoTimeout(param, _TIME_OUT);
+		final HttpUriRequest httpRequest = new HttpGet(params[0]);
+		HttpResponse httpResponse = null;
+		HttpEntity httpEntity = null;
+		String content = null;
+		try {
+			httpResponse = httpClient.execute(httpRequest);
+			httpEntity = httpResponse.getEntity();
+			content = EntityUtils.toString(httpEntity, encoding);
+		} catch (final Exception e) {
+			this.exception = e;
+			Log.e(TAG, "do in back ground", e);
+		} finally {
 			try {
-				httpResponse = httpClient.execute(httpRequest);
-				httpEntity = httpResponse.getEntity();
-				content = EntityUtils.toString(httpEntity, encoding);
+				httpEntity.consumeContent();
+				httpClient.getConnectionManager().shutdown();
 			} catch (final Exception e) {
 				this.exception = e;
-				Log.e(TAG, "do in back ground", e);
-			} finally {
-				try {
-					httpEntity.consumeContent();
-					httpClient.getConnectionManager().shutdown();
-				} catch (final Exception e) {
-					this.exception = e;
-					Log.e(TAG, "do in  back ground", e);
-				}
+				Log.e(TAG, "do in  back ground", e);
 			}
-			return content;
 		}
+		return content;
 	}
 
 	/*
@@ -211,11 +209,11 @@ public class RequestHttpTask extends AsyncTask<String, Void, String> {
 	protected void onPostExecute(final String result) {
 		// TODO Auto-generated method stub
 		Log.d(TAG, "on post execute");
+		dialog.dismiss();
 		if (exception == null) {
 			listener.onSuccess(result);
 		} else {
 			listener.onError(exception);
 		}
-		dialog.dismiss();
 	}
 }

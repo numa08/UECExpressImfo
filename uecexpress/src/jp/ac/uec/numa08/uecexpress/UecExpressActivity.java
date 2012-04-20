@@ -5,6 +5,7 @@ import java.util.List;
 import jp.ac.numa08.object.UECExpressImfo;
 import jp.ac.uec.numa08.asynchttpget.RequestHttpTask;
 import jp.ac.uec.numa08.widgets.ButtonClickListener;
+import jp.ac.uec.numa08.widgets.ExpressImfoAdapter;
 import jp.ac.uec.numa08.widgets.GetExpressListener;
 import android.app.Activity;
 import android.os.Bundle;
@@ -40,8 +41,8 @@ public class UecExpressActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		// TODO　休講情報取得タスク実行
-		executeExpressGetTask();
 		super.onResume();
+		executeExpressGetTask();
 	}
 
 	private void executeExpressGetTask() {
@@ -75,6 +76,15 @@ public class UecExpressActivity extends Activity {
 	// expressListView.setAdapter(adapter);
 	// }
 
-	public void updateAction(List<UECExpressImfo> imfoList) {
+	/**
+	 * 休講情報更新時のアクション
+	 * 
+	 * @param imfoList
+	 *            休講情報リスト
+	 */
+	public void updateAction(final List<UECExpressImfo> imfoList) {
+		final ExpressImfoAdapter adapter = new ExpressImfoAdapter(this,
+				imfoList);
+		expressListView.setAdapter(adapter);
 	}
 }

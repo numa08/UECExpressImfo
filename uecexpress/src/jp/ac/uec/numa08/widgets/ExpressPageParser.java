@@ -24,7 +24,7 @@ public class ExpressPageParser {
 	private static final int TEACHER = NAME + 1;
 	private static final int DESCRIPTION = TEACHER + 1;
 
-	private final Source source;
+	private transient final Source source;
 
 	public ExpressPageParser(final Source source) {
 		this.source = source;
@@ -44,11 +44,12 @@ public class ExpressPageParser {
 	// }
 
 	public List<UECExpressImfo> getExpressImfo() {
-		List<UECExpressImfo> expressList = new ArrayList<UECExpressImfo>();
-		List<Element> trList = source.getAllElements(HTMLElementName.TR);
+		final List<UECExpressImfo> expressList = new ArrayList<UECExpressImfo>();
+		final List<Element> trList = source.getAllElements(HTMLElementName.TR);
 		for (int i = 1; i < trList.size(); i++) {
-			Element tableRow = trList.get(i);
-			List<Element> tdList = tableRow.getAllElements(HTMLElementName.TD);
+			final Element tableRow = trList.get(i);
+			final List<Element> tdList = tableRow
+					.getAllElements(HTMLElementName.TD);
 			final String className = tdList.get(CLASS_NAME).getContent()
 					.toString();
 			final String date = tdList.get(DATE).getContent().toString();

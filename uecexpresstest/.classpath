@@ -5,5 +5,9 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/UecExpress"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="lib" path="libs/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="lib" path="libs/hamcrest-integration-1.1.jar"/>
+	<classpathentry kind="lib" path="libs/hamcrest-library-1.1.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
