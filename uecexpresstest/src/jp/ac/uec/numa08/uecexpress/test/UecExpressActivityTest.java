@@ -16,13 +16,14 @@ import jp.ac.uec.numa08.widgets.ExpressPageParser;
 import net.htmlparser.jericho.Source;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 
 public class UecExpressActivityTest extends
 		ActivityInstrumentationTestCase2<UecExpressActivity> {
-	// private static final String TAG = UecExpressActivityTest.class
-	// .getSimpleName();
+	private static final String TAG = UecExpressActivityTest.class
+			.getSimpleName();
 	private static final String _UEC_EXPRESS_URL = "http://kyoumu.office.uec.ac.jp/kyuukou/kyuukou.html";
 	private UecExpressActivity activity;
 	private Button updateButton;
@@ -48,15 +49,16 @@ public class UecExpressActivityTest extends
 	public void testExecut() throws InterruptedException,
 			UnsupportedEncodingException {
 		MyTestTask task = new MyTestTask(activity, new MyTestListener(),
-				"test", "test", "Shift_jis");
-		task.execute(UecExpressActivityTest._UEC_EXPRESS_URL);
-		signal.await();
+				"test", "test", "SHIFT_JIS");
+		// task.execute(UecExpressActivityTest._UEC_EXPRESS_URL);
+		// signal.await();
+		String result = task
+				.doInBackground(UecExpressActivityTest._UEC_EXPRESS_URL);
+		Log.d(TAG, result.length() + "");
 		ExpressPageParser parser = new ExpressPageParser(new Source(result));
 		List<UECExpressImfo> imfoList = parser.getExpressImfo();
 		UECExpressImfo imfo = imfoList.get(0);
-		String title = "英語演習";
-		// assertEquals("same string", title, imfo.getTitle());
-		// assertThat(title, is(imfo.getTitle()));
+		String title = "物理学概論第一";
 		assertThat(title, is(imfo.getTitle()));
 	}
 
@@ -80,7 +82,7 @@ public class UecExpressActivityTest extends
 
 		public MyTestTask(Activity activity, onRequestExecuteListener listener,
 				String dialogMessage, String dialogTitle, String encoding) {
-			super(activity, listener, dialogMessage, dialogTitle, encoding);
+			super(activity, listener, dialogMessage, dialogTitle);
 			// TODO Auto-generated constructor stub
 		}
 

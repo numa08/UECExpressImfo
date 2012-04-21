@@ -47,8 +47,7 @@ public class UecExpressActivity extends Activity {
 
 	private void executeExpressGetTask() {
 		final RequestHttpTask httpTask = new RequestHttpTask(this,
-				expressListener, R.string.dialog_message,
-				R.string.dialog_title, "Shift_jis");
+				expressListener, R.string.dialog_message, R.string.dialog_title);
 		httpTask.execute(UecExpressActivity._UEC_EXPRESS_URL);
 	}
 
