@@ -1,6 +1,5 @@
 package jp.ac.uec.numa08.asynchttpget;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.ArrayList;
@@ -157,7 +156,7 @@ public class RequestHttpTask extends AsyncTask<String, Void, String> {
 			try {
 				entity.consumeContent();
 				httpClient.getConnectionManager().shutdown();
-			} catch (final IOException e) {
+			} catch (final Exception e) {
 				// TODO Auto-generated catch block
 				// e.printStackTrace();
 				Log.e(TAG, null, e);

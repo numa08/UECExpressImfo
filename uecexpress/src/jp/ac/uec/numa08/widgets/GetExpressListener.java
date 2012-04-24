@@ -8,6 +8,12 @@ import jp.ac.uec.numa08.uecexpress.UecExpressActivity;
 import net.htmlparser.jericho.Source;
 import android.util.Log;
 
+/**
+ * 休講情報取得タスクのリスナー
+ * 
+ * @author numanuma08
+ * 
+ */
 public class GetExpressListener implements onRequestExecuteListener {
 	private static final String TAG = GetExpressListener.class.getSimpleName();
 
